@@ -1,10 +1,17 @@
 # Image Processing with OpenCV
 
-This example demonstrates basic image processing operations such as resizing, grayscale conversion, blurring, and file size comparison between JPEG and PNG formats.
+This project demonstrates basic image processing operations using Python and OpenCV, including resizing, grayscale conversion, blurring, and file size comparison between JPEG and PNG formats.
 
 ---
 
-## Code
+## 📌 Input Images
+
+- `test.png`  
+- `yellow_car.jpg`
+
+---
+
+## 🖥️ Code
 
 ```python
 import cv2
@@ -30,28 +37,20 @@ im2_bgr = cv2.cvtColor(im2, cv2.COLOR_GRAY2BGR)
 
 # --- Side by side: Original and Grayscale ---
 side_by_side1 = np.hstack((image, im2_bgr))
-cv2.imshow("Original vs Grayscale", side_by_side1)
+cv2.imwrite("side_by_side1.png", side_by_side1)
 
 # --- Side by side: Original and Blurred ---
 side_by_side2 = np.hstack((image, blurred_image))
-cv2.imshow("Original vs Blurred", side_by_side2)
-
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+cv2.imwrite("side_by_side2.png", side_by_side2)
 
 # --- Resize the image to half of the original size ---
 height, width = image.shape[:2]
 new_size = (width // 2, height // 2)
 resized_half = cv2.resize(image, new_size)
 
-# Show resized image
-cv2.imshow("Resized Image (Half)", resized_half)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
-
-# --- Save resized image as JPEG and PNG ---
-cv2.imwrite("resized_half.jpg", resized_half, [cv2.IMWRITE_JPEG_QUALITY, 90])
+# Save resized image
 cv2.imwrite("resized_half.png", resized_half)
+cv2.imwrite("resized_half.jpg", resized_half, [cv2.IMWRITE_JPEG_QUALITY, 90])
 
 # --- Compare file sizes ---
 jpeg_size = os.path.getsize("resized_half.jpg")
