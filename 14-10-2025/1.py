@@ -1,11 +1,12 @@
 # From a multiline string, extract all 10-digit Indian mobile numbers (starting with 6–9).
 import re
 
-text = """
-Contact me at 9876543210 or 9123456789.
-My office number is 01123456789.
-"""
+# Take input from the user
+text = input("Enter text containing phone numbers: ")
 
-pattern = r"\b[6-9]\d{9}\b"
+# Regex pattern to find 10-digit mobile numbers
+pattern = r"\b\d{10}\b"
+
 mobile_numbers = re.findall(pattern, text)
-print(mobile_numbers)
+
+print("Mobile numbers found:", mobile_numbers)
