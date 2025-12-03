@@ -1,0 +1,5 @@
+opencv-python
+pillow
+openpyxl
+tkinter
+numpy
